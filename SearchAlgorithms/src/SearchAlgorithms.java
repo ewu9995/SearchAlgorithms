@@ -21,9 +21,9 @@ public class SearchAlgorithms {
 		System.out.println(binSearch(test1, 1)); //0
 	}
 
-	private static int linSearch(int[] test1, int i) {
-		for(int x=0; x<test1.length;x++) {
-			if(test1[x]==i) {
+	private static int linSearch(int[] elements, int query) {
+		for(int x=0; x<elements.length;x++) {
+			if(elements[x]==query) {
 				return x;
 			}
 		}
@@ -32,15 +32,18 @@ public class SearchAlgorithms {
 
 
 	private static int binSearch(int[] test1, int i) {
-		int l =0;
+		int l = 0;
 		int r = test1.length -1;
 		while(l <= r) {
 			int mid = l+(r-l)/2;
-			if(i>= mid) {
-				l =mid+1;
+			if(i > test1[mid]) {
+				l = mid+1;
 			}
-			else if(i <= mid) {
+			else if(i < test1[mid]) {
 				r = mid-1;
+			}
+			else if(i == test1[mid]) {
+				return mid;
 			}
 		}
 		return -1;
